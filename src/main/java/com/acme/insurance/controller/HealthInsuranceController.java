@@ -29,7 +29,7 @@ private String payment;
 private String reject;
 @Autowired
 private RestTemplate restTemplate;
-@PostMapping("/insurance/claim-insurance")
+@PostMapping("/insurance/claim-insurance") //claim
 public ResponseEntity<?> claimHealthInsurance(@RequestHeader(value = "enableTracing", required = false) boolean enableTracing,
                                               @RequestHeader (value = "deviateResponse",required = false) boolean deviateResponse,
                                               @RequestBody (required = false) HealthClaimRequest healthClaimRequest) throws URISyntaxException {
@@ -45,7 +45,7 @@ public ResponseEntity<?> claimHealthInsurance(@RequestHeader(value = "enableTrac
      return new ResponseEntity<>(HttpStatus.OK);
 }
 
-@PostMapping("/validate/validate-claim")
+@PostMapping("/validate/validate-claim") //validate
 public ResponseEntity<?> validateClaim(@RequestHeader(value = "enableTracing", required = false) boolean enableTracing,
                                        @RequestHeader (value = "deviateResponse",required = false) boolean deviateResponse,
                                        @RequestBody (required = false) HealthClaimRequest healthClaimRequest) throws URISyntaxException {
@@ -80,7 +80,7 @@ public ResponseEntity<?> validateClaim(@RequestHeader(value = "enableTracing", r
     return new ResponseEntity<>(validateResponse,HttpStatus.OK);
 }
 
-@PostMapping("/assess/assess-claim-amount")
+@PostMapping("/assess/assess-claim-amount") //assess
 public ResponseEntity<?> assessClaimAmount(@RequestHeader(value = "enableTracing", required = false) boolean enableTracing,
                                            @RequestHeader (value = "deviateResponse",required = false) boolean deviateResponse,
                                            @RequestBody (required = false) ValidateResponse validateResponse) throws URISyntaxException {
@@ -110,7 +110,7 @@ public ResponseEntity<?> assessClaimAmount(@RequestHeader(value = "enableTracing
     return new ResponseEntity<>(assessClaimResponse,HttpStatus.OK);
 }
 
-@PostMapping("/payment/process-payment")
+@PostMapping("/payment/process-payment") //Payment
 public ResponseEntity<?> processPayment(@RequestHeader(value = "enableTracing", required = false) boolean enableTracing,
                                         @RequestHeader (value = "deviateResponse",required = false) boolean deviateResponse,
                                         @RequestBody (required = false ) AssessClaimResponse assessClaimResponse) throws URISyntaxException {
@@ -125,7 +125,7 @@ public ResponseEntity<?> processPayment(@RequestHeader(value = "enableTracing", 
     return new ResponseEntity<>(paymentResponse,HttpStatus.OK);
 }
 
-@PostMapping("/claim/reject-claim")
+@PostMapping("/reject-claim")
 public ResponseEntity<?> rejectClaim(@RequestHeader(value = "enableTracing", required = false) boolean enableTracing,
                                      @RequestHeader (value = "deviateResponse", required = false) boolean deviateResponse,
                                      @RequestBody (required = false) ValidateResponse validateResponse) {

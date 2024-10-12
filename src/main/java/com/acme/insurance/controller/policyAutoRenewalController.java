@@ -40,7 +40,7 @@ private String smsNotification;
 @Autowired
 private RestTemplate restTemplate;
 
-@PostMapping("/renew/auto")
+@PostMapping("/renew/auto") //renew
 public ResponseEntity<?> renewPolicy(@RequestHeader(value = "enableTracing", required = false) boolean enableTracing,
                                      @RequestHeader (value = "deviateResponse",required = false) boolean deviateResponse,
                                      @RequestBody(required = false) RenewalRequest request) throws URISyntaxException {
@@ -55,7 +55,7 @@ public ResponseEntity<?> renewPolicy(@RequestHeader(value = "enableTracing", req
     }
     return new ResponseEntity<>(HttpStatus.OK);
 }
-@PostMapping("/card/details")
+@PostMapping("/card/details") //card
 public ResponseEntity<?> fetchPayment(@RequestHeader(value = "enableTracing", required = false) boolean enableTracing,
                                      @RequestHeader (value = "deviateResponse",required = false) boolean deviateResponse,
                                       @RequestBody(required = false) RenewalRequest request) throws URISyntaxException {
@@ -84,7 +84,7 @@ public ResponseEntity<?> fetchPayment(@RequestHeader(value = "enableTracing", re
     return new ResponseEntity<>(renewalCard,HttpStatus.OK);
 }
 
-@PostMapping("/payment/debit")
+@PostMapping("/payment/debit") //details
 public ResponseEntity<?> tryPayment(@RequestHeader(value = "enableTracing", required = false) boolean enableTracing,
                                     @RequestHeader (value = "deviateResponse",required = false) boolean deviateResponse,
                                     @RequestBody(required = false) RenewalPaymentRequest request) throws URISyntaxException {
@@ -128,7 +128,7 @@ public ResponseEntity<?> tryPayment(@RequestHeader(value = "enableTracing", requ
     return new ResponseEntity<>(response,HttpStatus.OK);
 }
 
-@PostMapping("/payment/re-try")
+@PostMapping("/payment/re-try") //policy pay
 public ResponseEntity<?> retryPayment(@RequestHeader(value = "enableTracing", required = false) boolean enableTracing,
                                     @RequestHeader (value = "deviateResponse",required = false) boolean deviateResponse,
                                     @RequestBody(required = false) RenewalPaymentRequest request) throws URISyntaxException {
@@ -198,7 +198,7 @@ public ResponseEntity<?> updateProfile(@RequestHeader(value = "enableTracing", r
     return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 }
 
-@PostMapping("sms/notification")
+@PostMapping("/sms/notification")
 public ResponseEntity<?> updateProfile(@RequestBody(required = false) Notification notification){
     NotificationStatus notificationStatus =new NotificationStatus();
     notificationStatus.setMessage("Success");
