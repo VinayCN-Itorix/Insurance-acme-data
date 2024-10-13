@@ -1,6 +1,7 @@
 package com.acme.insurance.controller;
 
 import com.acme.insurance.model.CarInsurance.*;
+import io.apiwiz.compliance.config.EnableCompliance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
@@ -16,6 +17,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("v1/car")
+@EnableCompliance
 public class CarInsuranceController {
 
 @Value("${api.variant:null}")

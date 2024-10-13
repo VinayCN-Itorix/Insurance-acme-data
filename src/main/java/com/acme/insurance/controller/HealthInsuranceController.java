@@ -75,7 +75,7 @@ public ResponseEntity<?> validateClaim(@RequestHeader(value = "enableTracing", r
             return new ResponseEntity<>(res.getBody(), HttpStatus.OK);
         }
         return new ResponseEntity<>(validateResponse, HttpStatus.OK);
-            
+        
     }
     return new ResponseEntity<>(validateResponse,HttpStatus.OK);
 }
@@ -125,7 +125,7 @@ public ResponseEntity<?> processPayment(@RequestHeader(value = "enableTracing", 
     return new ResponseEntity<>(paymentResponse,HttpStatus.OK);
 }
 
-@PostMapping("/reject-claim")
+@PostMapping("insurance/reject-claim")
 public ResponseEntity<?> rejectClaim(@RequestHeader(value = "enableTracing", required = false) boolean enableTracing,
                                      @RequestHeader (value = "deviateResponse", required = false) boolean deviateResponse,
                                      @RequestBody (required = false) ValidateResponse validateResponse) {
