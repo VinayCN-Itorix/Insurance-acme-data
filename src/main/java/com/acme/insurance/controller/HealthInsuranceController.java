@@ -51,9 +51,9 @@ public ResponseEntity<?> validateClaim(@RequestHeader(value = "enableTracing", r
                                        @RequestBody (required = false) HealthClaimRequest healthClaimRequest) throws URISyntaxException {
     ValidateResponse validateResponse = new ValidateResponse();
     if(deviateResponse){
+        validateResponse.setValid(false);
+        validateResponse.setClaimId(String.valueOf(UUID.randomUUID()));
         if(enableTracing){
-            validateResponse.setValid(false);
-            validateResponse.setClaimId(String.valueOf(UUID.randomUUID()));
             HttpHeaders headers = new HttpHeaders();
             headers.add("enableTracing",String.valueOf(Boolean.TRUE));
             headers.add("deviateResponse",String.valueOf(deviateResponse));
@@ -75,7 +75,6 @@ public ResponseEntity<?> validateClaim(@RequestHeader(value = "enableTracing", r
             return new ResponseEntity<>(res.getBody(), HttpStatus.OK);
         }
         return new ResponseEntity<>(validateResponse, HttpStatus.OK);
-        
     }
     return new ResponseEntity<>(validateResponse,HttpStatus.OK);
 }
