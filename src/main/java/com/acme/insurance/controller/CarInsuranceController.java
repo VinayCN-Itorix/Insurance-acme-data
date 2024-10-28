@@ -164,12 +164,12 @@ public ResponseEntity<?> getCarQuoteCalculations(@RequestHeader(value = "enableT
                                                  @RequestBody (required = false) CalRequest calRequest){
     ODPremium odPremium = new ODPremium();
     odPremium.setBasicOdPremium("40000");
-    odPremium.setNoClaimBonus("8000");
-    odPremium.setMessage("percentage 20%");
+    odPremium.setNoClaimBonus("-8000");
+    odPremium.setMessage("Premium is Ready");
     
     PremiumDetails premiumDetails = new PremiumDetails();
-    premiumDetails.setPremium("32000");
-    premiumDetails.setGst("18%");
+    premiumDetails.setPremium("$ 32000");
+    premiumDetails.setGst("1177");
     InsuranceBreakup insuranceBreakup = new InsuranceBreakup();
     insuranceBreakup.setOdPremium(odPremium);
     insuranceBreakup.setPremiumDetails(premiumDetails);

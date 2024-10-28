@@ -118,7 +118,7 @@ public ResponseEntity<?> processPayment(@RequestHeader(value = "enableTracing", 
         paymentResponse.setMessage("INVALID PAYMENT ID");
     }else {
         paymentResponse.setPaymentStatus("COMPLETED");
-        paymentResponse.setClaimAmount(String.valueOf(ThreadLocalRandom.current().nextInt(20000, 1000000)));
+        paymentResponse.setClaimAmount(String.format("₹%s", String.valueOf(ThreadLocalRandom.current().nextInt(20000, 1000000))));
         paymentResponse.setMessage("Payment for Claim "+ assessClaimResponse.getClaimID() +" has been Processed Successfully");
     }
     return new ResponseEntity<>(paymentResponse,HttpStatus.OK);
